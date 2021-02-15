@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2021-02-13T10:42:46
+# Project created by QtCreator 2021-02-13T19:22:12
 #
 #-------------------------------------------------
 
@@ -18,3 +18,18 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+LIBS += -L$$PWD/../../app/bin/debug/ -lGUI
+
+INCLUDEPATH += $$PWD/../../app/bin/debug
+DEPENDPATH += $$PWD/../../app/bin/debug
+
+CONFIG(debug, debug|release){
+    DESTDIR =  $$PWD/../../app/bin/debug
+}else{
+    DESTDIR =  $$PWD/../../app/bin/release
+}
+
+
+
+
