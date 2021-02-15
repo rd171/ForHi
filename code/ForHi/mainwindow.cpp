@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QFileDialog>
+#include "../GUI/qimagedraw.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -41,7 +43,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::ViewPicture()
 {
-    QMessageBox msgBox;
-    msgBox.setText("The document has been modified.");
-    msgBox.exec();
+    QFileDialog *fileDialog = new QFileDialog(this);
+    fileDialog->setWindowTitle(tr("Select a picture"));
+    fileDialog->setDirectory(".");
+    fileDialog->setNameFilter(tr("File(*.*)"));
+    fileDialog->setFileMode(QFileDialog::ExistingFiles);
+    fileDialog->setViewMode(QFileDialog::Detail);
+    QStringList fileNames;
+    if (fileDialog->exec()) {
+        fileNames = fileDialog->selectedFiles();
+    }
+    if ( fileNames.size() > 0 )
+    {
+        QImageDraw pic(this);
+        pic.show();
+        pic.Show(fileNames.at(0));           // load picture
+    }
+
 }
