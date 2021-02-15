@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include "../GUI/qimagectrl.h"
+#include "../GUI/qimagegrid.h"
 #include "../GUI/qresmanager.h"
 
 namespace Ui {
@@ -19,6 +19,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+
+public slots:
+    void ViewPicture();
+
 private:
     Ui::MainWindow *ui;
 
@@ -26,9 +31,11 @@ private:
     QVBoxLayout    m_LeftLayout;
     QVBoxLayout    m_RightLayout;
 
-    QImageCtrl*     m_pRecentImgCtrl;
-    QImageCtrl*     m_pFavoriteImgCtrl;
+    QImageGrid*     m_pRecentImgCtrl;
+    QImageGrid*     m_pFavoriteImgCtrl;
     QResManager*    m_pQResManager;
+
+
 };
 
 #endif // MAINWINDOW_H

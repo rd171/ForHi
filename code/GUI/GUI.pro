@@ -14,13 +14,13 @@ CONFIG += staticlib
 
 
 SOURCES += gui.cpp \
-    qimagectrl.cpp \
-    qresmanager.cpp
+    qresmanager.cpp \
+    qimagegrid.cpp
 
 HEADERS += gui.h\
         gui_global.h \
-    qimagectrl.h \
-    qresmanager.h
+    qresmanager.h \
+    qimagegrid.h
 
 unix {
     target.path = /usr/lib
