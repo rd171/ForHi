@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QPaintEvent>
+#include <QLabel>
+#include <QHBoxLayout>
 
 class QImageDraw : public QWidget
 {
@@ -10,17 +12,19 @@ class QImageDraw : public QWidget
 public:
     explicit QImageDraw(QWidget *parent = 0);
 
-    bool    Show(QString strFile);
+    bool    ShowImage(QString strFile);
 
 signals:
 
 public slots:
 
 protected:
-    virtual void	paintEvent(QPaintEvent * event);
+
 
 private:
-    QString     m_strFile;
+    QLabel*     m_pImgLab;
+    QLabel*     m_pImgInfoLab;
+    QHBoxLayout    m_WorkspaceLayout;
 
 };
 

@@ -57,9 +57,9 @@ void MainWindow::ViewPicture()
     {
         QImageDraw* pic = new QImageDraw();
         pic->setWindowTitle(fileNames.at(0));
-        pic->setWindowState(Qt::WindowMaximized|Qt::WindowActive);
-        pic->Show(fileNames.at(0));
         pic->show();
+        pic->resize(800, 600);
+        pic->ShowImage(fileNames.at(0));
     }
 
 }
