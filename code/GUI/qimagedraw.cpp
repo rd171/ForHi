@@ -10,8 +10,12 @@ QImageDraw::QImageDraw(QWidget *parent) :
     setStyleSheet("background-color:black");
     m_pImgLab       = new QLabel(this);
     m_pImgInfoLab   = new QLabel(this);
-    m_WorkspaceLayout.addWidget(m_pImgLab, 5);
+    m_pImgInfoLab->setWordWrap(true);
+    m_pImgLab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    m_pImgInfoLab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    m_WorkspaceLayout.addWidget(m_pImgLab, 4);
     m_WorkspaceLayout.addWidget(m_pImgInfoLab, 1);
+    m_WorkspaceLayout.setSpacing(0);
     setLayout(&m_WorkspaceLayout);
 }
 
@@ -29,6 +33,6 @@ bool QImageDraw::ShowImage(QString strFile)
     m_pImgLab->setPixmap(img);
 
     m_pImgInfoLab->setText(strFile);
-    m_pImgInfoLab->setStyleSheet("background-color:black;color:white;text-align:left;vertical-align:top;");
+    m_pImgInfoLab->setStyleSheet("background-color:blue;color:white;text-align:left;vertical-align:top;");
     return true;
 }
