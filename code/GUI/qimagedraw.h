@@ -19,12 +19,17 @@ signals:
 public slots:
 
 protected:
+    void resizeEvent(QResizeEvent *event);
 
 
 private:
     QLabel*     m_pImgLab;
     QLabel*     m_pImgInfoLab;
     QHBoxLayout    m_WorkspaceLayout;
+
+private:
+    QString     GetExIf(QString strFile);
+    QString     m_strImg;
 
 };
 

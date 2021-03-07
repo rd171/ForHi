@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets declarative qml quick network opengl sql script scripttools svg webkit webkitwidgets xml xmlpatterns multimedia  testlib
+QT       += widgets network  sql script scripttools svg xml xmlpatterns multimedia  testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 
@@ -16,13 +16,15 @@ CONFIG += staticlib
 SOURCES += gui.cpp \
     qresmanager.cpp \
     qimagegrid.cpp \
-    qimagedraw.cpp
+    qimagedraw.cpp \
+    Exif.cpp
 
 HEADERS += gui.h\
         gui_global.h \
     qresmanager.h \
     qimagegrid.h \
-    qimagedraw.h
+    qimagedraw.h \
+    Exif.h
 
 unix {
     target.path = /usr/lib
