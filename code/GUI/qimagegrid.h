@@ -3,7 +3,10 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QGridLayout>
+#include <QVector>
 #include <QLabel>
+#include "qimagedraw.h"
 
 class QImageGrid : public QWidget
 {
@@ -28,6 +31,8 @@ public slots:
 
 private:
     QVBoxLayout     m_WorkspaceLayout;
+    QGridLayout     m_ImgLayout;
+    QVector<QImageDraw*>    m_vtImg;
     QLabel*         m_pTitle;
     int             m_nCols;
     int             m_nRows;
