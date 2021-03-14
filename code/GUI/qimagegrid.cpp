@@ -6,9 +6,40 @@ QImageGrid::QImageGrid(QWidget *parent) :
     m_pTitle        = new QLabel(this);
     m_WorkspaceLayout.addWidget(m_pTitle);
     m_WorkspaceLayout.addLayout(&m_ImgLayout);
-    for ( int i = 0; i < 3; i++ )
+    m_nCols         = 1;
+    m_nRows         = 1;
+    UiLayout();
+}
+
+void QImageGrid::SetTitle(QString str)
+{
+    m_pTitle->setText(str);
+}
+
+void QImageGrid::SetColumnAndRow(int nCols, int nRows)
+{
+    m_nCols     = nCols;
+    m_nRows     = nRows;
+    UiLayout();
+}
+
+void  QImageGrid::UiLayout()
+{
+    for(auto it = m_vtImg.begin(); it != m_vtImg.end(); ++it)
     {
-        for ( int j = 0; j < 6; j++)
+        if(*it != nullptr)
+        {
+            delete (*it);
+            (*it) = nullptr;
+        }
+
+    }
+    m_vtImg.clear();
+    QVector<QImageDraw*>().swap(m_vtImg);
+
+    for ( int i = 0; i < m_nRows; i++ )
+    {
+        for ( int j = 0; j < m_nCols; j++)
         {
             QImageDraw* pItem = new QImageDraw(this);
             pItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -17,28 +48,12 @@ QImageGrid::QImageGrid(QWidget *parent) :
         }
     }
     setLayout(&m_WorkspaceLayout);
-    m_nCols         = 1;
-    m_nRows         = 1;
 }
 
-void QImageGrid::SetTitle(QString str)
+bool QImageGrid::ShowImg(int nCols, int nRows, QString strPath)
 {
-    m_pTitle->setText(str);
-}
-
-void QImageGrid::SetColumn(int nCols)
-{
-    m_nCols     = nCols;
-    UiLayout();
-}
-
-void QImageGrid::SetRow(int nRows)
-{
-    m_nRows     = nRows;
-    UiLayout();
-}
-
-void  QImageGrid::UiLayout()
-{
-
+    if ( ( nCols < 0 || nCols >= m_nCols ) && ( nRows < 0 || nRows >= m_nRows ) )
+        return  false;
+    m_vtImg[nRows*m_nCols + nCols]->ShowImage(strPath);
+    return true;
 }

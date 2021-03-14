@@ -20,6 +20,8 @@ HEADERS  += mainwindow.h
 FORMS    += mainwindow.ui
 
 LIBS += -L$$PWD/../../app/bin/debug/ -lGUI
+LIBS += -L$$PWD/../../app/bin/debug/ -lFILE
+LIBS += -L$$PWD/../../app/bin/debug/ -lBLL
 
 INCLUDEPATH += $$PWD/../../app/bin/debug
 DEPENDPATH += $$PWD/../../app/bin/debug

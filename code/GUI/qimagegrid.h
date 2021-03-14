@@ -22,8 +22,9 @@ public:
     // Remark:
     void SetTitle(QString str);
 
-    void SetColumn(int nCols);
-    void SetRow(int nRows);
+    void SetColumnAndRow(int nCols, int nRows);
+
+    bool ShowImg(int nCols, int nRows, QString strPath);
 
 signals:
 

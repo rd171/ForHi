@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include "../GUI/qimagedraw.h"
+#include "../FILE/CDriveIndex.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,20 @@ MainWindow::MainWindow(QWidget *parent) :
     m_LeftLayout.setStretchFactor(m_pRecentImgCtrl, 2);
     m_LeftLayout.setStretchFactor(m_pFavoriteImgCtrl, 1);
     centralWidget()->setLayout(&m_WorkspaceLayout);
+
+    wstring str_dir = L"d:\\";
+    //CDriveIndex m(str_dir);
+    CDriveIndex m;
+    BOOL bRet = m.Init('d');
+    wstring strQuery                       = L".jpg";
+    wstring strQueryPath                   = L"";
+    vector<SearchResultFile> *rgsrfResults  = new vector<SearchResultFile>;
+    int nRet = m.Find(&strQueryPath, &strQueryPath, rgsrfResults);
+
+    m_pRecentImgCtrl->SetColumnAndRow(4, 2);
+    m_pRecentImgCtrl->ShowImg(0, 0, "..\\test.jpg");
+
+    m_pFavoriteImgCtrl->SetColumnAndRow(4, 1);
 }
 
 MainWindow::~MainWindow()
