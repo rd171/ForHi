@@ -46,9 +46,21 @@ MainWindow::MainWindow(QWidget *parent) :
     int nRet = m.Find(&strQueryPath, &strQueryPath, rgsrfResults);
 
     m_pRecentImgCtrl->SetColumnAndRow(4, 2);
-    m_pRecentImgCtrl->ShowImg(0, 0, "..\\test.jpg");
-
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            m_pRecentImgCtrl->ShowImg(j, i, "..\\test.jpg");
+        }
+    }
     m_pFavoriteImgCtrl->SetColumnAndRow(4, 1);
+    for (int i = 0; i < 1; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            m_pFavoriteImgCtrl->ShowImg(j, i, "..\\test.jpg");
+        }
+    }
 }
 
 MainWindow::~MainWindow()
